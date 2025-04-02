@@ -2,7 +2,6 @@ import { utils, writeFile } from "xlsx";
 import type { ResultCalculator } from "interfaces/result-calculator";
 
 export const exportToExcel = (data: ResultCalculator, filename: string) => {
-  // Preparar datos para la hoja de resultados mensuales
   const monthlyData = data.monthlyResults.map((result) => ({
     Mes: result.month,
     "Capital Inicial": `$${result.initialCapital.toFixed(2)}`,
@@ -11,7 +10,6 @@ export const exportToExcel = (data: ResultCalculator, filename: string) => {
     "Monto Total": `$${result.totalAmount.toFixed(2)}`,
   }));
 
-  // Preparar datos para el resumen
   const summaryData = [
     {
       Concepto: "Capital Inicial",
@@ -32,18 +30,14 @@ export const exportToExcel = (data: ResultCalculator, filename: string) => {
     },
   ];
 
-  // Crear libro de trabajo y hojas
   const wb = utils.book_new();
 
-  // Agregar hoja de resultados mensuales
   const wsMonthly = utils.json_to_sheet(monthlyData);
   utils.book_append_sheet(wb, wsMonthly, "Resultados Mensuales");
 
-  // Agregar hoja de resumen
   const wsSummary = utils.json_to_sheet(summaryData);
   utils.book_append_sheet(wb, wsSummary, "Resumen");
 
-  // Establecer anchos de columna para mejor visualización
   const monthlyColWidths = [
     { wch: 8 }, // Mes
     { wch: 15 }, // Capital Inicial
