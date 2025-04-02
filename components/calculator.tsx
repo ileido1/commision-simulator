@@ -98,7 +98,7 @@ const Calculator = () => {
       <div className="w-full bg-white p-6 rounded-lg shadow-md mb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div className="form-group">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="capital" className="block text-sm font-medium text-gray-700 mb-2">
               Capital semilla (USD):
             </label>
             <input
@@ -106,16 +106,18 @@ const Calculator = () => {
               value={capital}
               onChange={(e) => setCapital(e.target.value)}
               placeholder="Ingrese su capital"
+              id="capital"
               min="1"
               className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
             />
           </div>
 
           <div className="form-group">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="investing" className="block text-sm font-medium text-gray-700 mb-2">
               Plazo de inversión:
             </label>
             <select
+            id="investing"
               value={term}
               onChange={(e) => setTerm(e.target.value)}
               className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white transition-colors"
@@ -157,6 +159,7 @@ const Calculator = () => {
         </div>
 
         <button
+          data-testid="calculate-button"
           className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-md transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
           onClick={handleSimulation}
           disabled={isLoading}

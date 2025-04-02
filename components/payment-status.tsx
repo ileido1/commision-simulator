@@ -14,11 +14,15 @@ const PaymentStatus : React.FC<PaymentStatusProps> = ({ status, onClose }) => {
   const paymentReceived = status.amountCaptured > 0;
 
   return (
-    <div className="fixed inset-0 bg-black/30 backdrop-blur-sm transition-opacity flex items-center justify-center z-50">
+    <div
+      data-testid="payment-status"
+      className="fixed inset-0 bg-black/30 backdrop-blur-sm transition-opacity flex items-center justify-center z-50"
+    >
       <div className="bg-white rounded-lg shadow-xl w-full max-w-md overflow-hidden">
         <div className="flex justify-between items-center bg-blue-600 text-white px-6 py-4">
           <h3 className="text-xl font-bold">Estado del Pago</h3>
           <button
+            data-testid="close-status"
             onClick={onClose}
             className="text-white text-2xl hover:text-gray-200 transition-colors focus:outline-none"
           >
@@ -37,8 +41,8 @@ const PaymentStatus : React.FC<PaymentStatusProps> = ({ status, onClose }) => {
               </h4>
               <p className="text-gray-600">
                 Hemos recibido un monto de{" "}
-                <span className="font-semibold">
-                  ${status.amountCaptured} ${status.smartContractSymbol}
+                <span className="font-semibold" data-testid="payment-amount">
+                  ${status.amountCaptured} {status.smartContractSymbol}
                 </span>
                 .
               </p>

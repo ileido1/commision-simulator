@@ -19,6 +19,7 @@ const QRPayment: React.FC<QRPaymentProps> = ({ paymentData, onClose }) => {
       aria-labelledby="modal-title"
       role="dialog"
       aria-modal="true"
+      data-testid="qr-payment"
     >
       <div className="fixed inset-0 bg-black/30 backdrop-blur-sm transition-opacity"></div>
 
@@ -28,6 +29,7 @@ const QRPayment: React.FC<QRPaymentProps> = ({ paymentData, onClose }) => {
             <div className="flex justify-between items-center bg-blue-600 text-white px-6 py-4">
               <h2 className="text-xl font-bold">Código QR de Pago</h2>
               <button
+                data-testid="close-qr"
                 onClick={onClose}
                 className="text-white text-2xl hover:text-gray-200 transition-colors focus:outline-none"
                 aria-label="Cerrar"

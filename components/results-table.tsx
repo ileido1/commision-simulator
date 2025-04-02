@@ -8,7 +8,10 @@ const ResultTable: React.FC<ResultTableProps> = ({ results }) => {
   if (!results) return null;
 
   return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+    <div
+      className="bg-white rounded-lg shadow-lg overflow-hidden"
+      data-testid="result-table"
+    >
       <h2 className="text-2xl font-bold text-center py-4 bg-blue-800 text-white">
         Resultados de la Simulación
       </h2>
