@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import QRCode from "react-qr-code";
 
 interface QRPaymentProps {
@@ -13,6 +13,8 @@ interface QRPaymentProps {
 const QRPayment: React.FC<QRPaymentProps> = ({ paymentData, onClose }) => {
   if (!paymentData) return null;
 
+
+
   return (
     <div
       className="relative z-50"
@@ -24,32 +26,32 @@ const QRPayment: React.FC<QRPaymentProps> = ({ paymentData, onClose }) => {
       <div className="fixed inset-0 bg-black/30 backdrop-blur-sm transition-opacity"></div>
 
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-        <div className="relative w-full max-w-md bg-white rounded-xl shadow-2xl transform transition-all">
-          <div className="p-6 space-y-6">
-            <div className="flex justify-between items-center bg-blue-600 text-white px-6 py-4">
-              <h2 className="text-xl font-bold">Código QR de Pago</h2>
-              <button
-                data-testid="close-qr"
-                onClick={onClose}
-                className="text-white text-2xl hover:text-gray-200 transition-colors focus:outline-none"
-                aria-label="Cerrar"
+        <div className="relative w-full max-w-md max-h-[90vh] overflow-y-auto bg-white rounded-xl shadow-2xl transform transition-all">
+          <div className="sticky top-0 z-10 flex justify-between items-center bg-blue-600 text-white px-6 py-4">
+            <h2 className="text-xl font-bold">Código QR de Pago</h2>
+            <button
+              data-testid="close-qr"
+              onClick={onClose}
+              className="text-white text-2xl hover:text-gray-200 transition-colors focus:outline-none"
+              aria-label="Cerrar"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
               >
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-            </div>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
 
+          <div className="p-6 space-y-6">
             <div className="space-y-6">
               <div className="flex justify-center p-4 bg-gray-50 rounded-lg">
                 <QRCode
@@ -97,7 +99,7 @@ const QRPayment: React.FC<QRPaymentProps> = ({ paymentData, onClose }) => {
             </div>
           </div>
 
-          <div className="p-4 bg-gray-50 rounded-b-xl border-t border-gray-100">
+          <div className="sticky bottom-0 p-4 bg-gray-50 rounded-b-xl border-t border-gray-100">
             <button
               onClick={onClose}
               className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-md transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"

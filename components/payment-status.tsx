@@ -18,8 +18,8 @@ const PaymentStatus : React.FC<PaymentStatusProps> = ({ status, onClose }) => {
       data-testid="payment-status"
       className="fixed inset-0 bg-black/30 backdrop-blur-sm transition-opacity flex items-center justify-center z-50"
     >
-      <div className="bg-white rounded-lg shadow-xl w-full max-w-md overflow-hidden">
-        <div className="flex justify-between items-center bg-blue-600 text-white px-6 py-4">
+      <div className="relative w-full max-w-md max-h-[90vh] overflow-y-auto bg-white rounded-xl shadow-2xl transform transition-all">
+        <div className="sticky top-0 z-10 flex justify-between items-center bg-blue-600 text-white px-6 py-4">
           <h3 className="text-xl font-bold">Estado del Pago</h3>
           <button
             data-testid="close-status"
